@@ -17,11 +17,11 @@
     <script type="text/babel">
       var HelloWorld = React.createClass({
         render: function(){
-          return <h1>Hello World - Component</h1>
+          return <h1>Hello {this.props.name}</h1>
         }
       });
       ReactDOM.render(
-        <HelloWorld/>,
+        <HelloWorld name="Juán" />,
         document.getElementById('app')
       );
     </script>
