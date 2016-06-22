@@ -17,12 +17,14 @@
     <script type="text/babel">
       var HelloWorld = React.createClass({
         render: function(){
-          return <h1>Time: {this.props.date.toTimeString()}</h1>
+          var text = 'Time: ' + this.props.date.toTimeString();
+          return React.createElement('h1', null, text);
         }
       });
       setInterval(function() {
+        var helloWorldComponent = React.createElement(HelloWorld, {date: new Date()})
         ReactDOM.render(
-          <HelloWorld date={new Date()} />,
+          helloWorldComponent,
           document.getElementById('app')
         );
       }, 500);
