@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+  </head>
+  <body>
+    <!-- DOM element to insert React components -->
+    <div id="app"></div>
+
+    <!-- React libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js"></script>
+
+    <!-- Main code -->
+    <script type="text/babel">
+      ReactDOM.render(
+        <h1>Hello World</h1>,
+        document.getElementById('app')
+      );
+    </script>
+  </body>
+</html>
