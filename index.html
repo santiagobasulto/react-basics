@@ -6,29 +6,31 @@
   </head>
   <body>
     <!-- DOM element to insert React components -->
-    <div id="app1"></div>
-    <div id="app2"></div>
+    <div id="app"></div>
 
     <!-- React libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js"></script>
 
     <!-- Main code -->
     <script type="text/babel">
-      var helloworld = React.createClass({
+      var TimeComponent = React.createClass({
         render: function(){
-          return <h1>Lowercase component</h1>
+          return <span>{this.props.date.toTimeString()}</span>
         }
       });
-      ReactDOM.render(
-        <helloworld />,
-        document.getElementById('app1')
-      );
-      ReactDOM.render(
-        <H1>Hello World</H1>,
-        document.getElementById('app2')
-      );
+      var HelloWorld = React.createClass({
+        render: function(){
+          return <h1>Time: <TimeComponent date={this.props.date} /></h1>
+        }
+      });
+      setInterval(function() {
+        ReactDOM.render(
+          <HelloWorld date={new Date()} />,
+          document.getElementById('app')
+        );
+      }, 500);
     </script>
   </body>
 </html>
