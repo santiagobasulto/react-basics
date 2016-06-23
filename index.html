@@ -22,11 +22,14 @@
     <!-- Main code -->
     <script type="text/babel">
       var TimeComponent = React.createClass({
-        getDefaultProps: function () {
-          return { warnTiming: false };
+        // getDefaultProps: function () {
+        //   return { warnTiming: false };
+        // },
+        propTypes: {
+          warnTiming: React.PropTypes.bool.isRequired
         },
         render: function(){
-          console.log(this.props.warnTiming === false)
+          console.log(typeof this.props.warnTiming)
           return <span className={this.props.warnTiming ? "red-text" : ""}>{this.props.date.toTimeString()}</span>
         }
       });
