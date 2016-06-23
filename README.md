@@ -32,10 +32,10 @@ Components and elements case conventions
 Components composition
 
 **[Step 10](https://github.com/santiagobasulto/react-basics/releases/tag/step10):**
-Default property values
+Properties without values act as booleans
 
 **[Step 11](https://github.com/santiagobasulto/react-basics/releases/tag/step11):**
-Default property values
+getDefaultProps to specify default property values
 
 **[Step 12](https://github.com/santiagobasulto/react-basics/releases/tag/step12):**
 Specifying expected props with propTypes
