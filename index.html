@@ -4,11 +4,6 @@
     <meta charset="UTF-8" />
     <title>Hello React!</title>
     <!-- Styles -->
-    <style>
-      .red-text{
-        color: red;
-      }
-    </style>
   </head>
   <body>
     <!-- DOM element to insert React components -->
@@ -21,29 +16,15 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      var TimeComponent = React.createClass({
-        // getDefaultProps: function () {
-        //   return { warnTiming: false };
-        // },
-        propTypes: {
-          warnTiming: React.PropTypes.bool.isRequired
-        },
-        render: function(){
-          console.log(typeof this.props.warnTiming)
-          return <span className={this.props.warnTiming ? "red-text" : ""}>{this.props.date.toTimeString()}</span>
+      class HelloWorld extends React.Component {
+        render(){
+          return <h1>Hello World</h1>
         }
-      });
-      var HelloWorld = React.createClass({
-        render: function(){
-          return <h1>Time: <TimeComponent date={this.props.date} /></h1>
-        }
-      });
-      setInterval(function() {
-        ReactDOM.render(
-          <HelloWorld date={new Date()} />,
-          document.getElementById('app')
-        );
-      }, 500);
+      }
+      ReactDOM.render(
+        <HelloWorld />,
+        document.getElementById('app')
+      );
     </script>
   </body>
 </html>
