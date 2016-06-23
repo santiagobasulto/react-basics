@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <title>Hello React!</title>
     <!-- Styles -->
+    <style>
+      .red-text{
+        color: red;
+      }
+    </style>
   </head>
   <body>
     <!-- DOM element to insert React components -->
@@ -16,15 +21,25 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      class HelloWorld extends React.Component {
+      class TimeComponent extends React.Component {
         render(){
-          return <h1>Hello World</h1>
+          return <span className={this.props.warnTiming ? "red-text" : ""}>{this.props.date.toTimeString()}</span>
         }
       }
-      ReactDOM.render(
-        <HelloWorld />,
-        document.getElementById('app')
-      );
+      class HelloWorld extends React.Component {
+        render() {
+          return <h1>Time: <TimeComponent date={this.props.date} warnTiming/></h1>
+        }
+      }
+      TimeComponent.propTypes = {
+        warnTiming: React.PropTypes.bool.isRequired
+      }
+      setInterval(function() {
+        ReactDOM.render(
+          <HelloWorld date={new Date()} />,
+          document.getElementById('app')
+        );
+      }, 500);
     </script>
   </body>
 </html>
