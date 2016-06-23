@@ -1,5 +1,9 @@
 # React Basics
 
+This is a step-by-step tutorial about React. We're using tags to differentiate every step in the tutorial. Here's a complete list of steps (with their respective tag links):
+
+## Steps
+
 **[Step 1](https://github.com/santiagobasulto/react-basics/releases/tag/step1):**
 Render simple element in the screen
 
