@@ -48,3 +48,6 @@ Complete example with props and propTypes using ES6 style
 
 **[Step 15](https://github.com/santiagobasulto/react-basics/releases/tag/step15):**
 A more complex example using dynamically generated components
+
+**[Step 16](https://github.com/santiagobasulto/react-basics/releases/tag/step16):**
+Component children access with props.children
