@@ -18,25 +18,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
 
     <!-- Main code -->
     <script type="text/babel">
       class TimeComponent extends React.Component {
         render(){
-          return <span className={this.props.warnTiming ? "red-text" : ""}>{this.props.date.toTimeString()}</span>
+          return <li>Time in {this.props.name}: {this.props.date.toTimeString()}</li>
         }
       }
       class HelloWorld extends React.Component {
         render() {
-          return <h1>Time: <TimeComponent date={this.props.date} warnTiming/></h1>
+          let namesAndDates = _.zip(this.props.worldNames, this.props.worldDates);
+          let components = _.map(namesAndDates, ([name, date]) => {
+            return <TimeComponent date={date} name={name} key={name} />
+          })
+          return <ul>{components}</ul>
         }
       }
       TimeComponent.propTypes = {
-        warnTiming: React.PropTypes.bool.isRequired
+        date: React.PropTypes.instanceOf(Date).isRequired,
+        name: React.PropTypes.string
+      }
+      HelloWorld.propTypes = {
+        worldDates: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Date)).isRequired,
+        worldNames: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
       }
       setInterval(function() {
+        var ba = new Date();
+        var est = new Date();
+        var pst = new Date();
+        est.setHours(ba.getHours() - 1);
+        pst.setHours(ba.getHours() - 4);
+
         ReactDOM.render(
-          <HelloWorld date={new Date()} />,
+          <HelloWorld worldDates={[ba, est, pst]} worldNames={['Buenos Aires', 'New York', 'San Francisco']} />,
           document.getElementById('app')
         );
       }, 500);
