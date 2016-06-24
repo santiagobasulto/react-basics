@@ -45,3 +45,6 @@ First example using ES6 classes
 
 **[Step 14](https://github.com/santiagobasulto/react-basics/releases/tag/step14):**
 Complete example with props and propTypes using ES6 style
+
+**[Step 15](https://github.com/santiagobasulto/react-basics/releases/tag/step15):**
+A more complex example using dynamically generated components
