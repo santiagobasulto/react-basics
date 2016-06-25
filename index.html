@@ -16,32 +16,26 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      class WorldClock extends React.Component {
+      class TodoApp extends React.Component {
         constructor(){
           super();
-
-          var ba = new Date();
-          var est = new Date();
-          var pst = new Date();
-          est.setHours(ba.getHours() - 1);
-          pst.setHours(ba.getHours() - 4);
-
-          this.state = {ba, est, pst}
+          this.state = {
+            todoText: '',
+            todos: []
+          }
         }
         render() {
-          let times = _.map(this.state, (time, key) => {
-            return <li key={key}>{time.toTimeString()}</li>
-          });
           return <div>
-            <button onClick=>Add ten seconds</button>
+            <input type="text"/><button>Add Todo</button>
             <ul>
-              {times}
+              <li>Todo 1</li>
+              <li>Todo 2</li>
             </ul>
           </div>
         }
       }
       ReactDOM.render(
-        <WorldClock />,
+        <TodoApp />,
         document.getElementById('app'));
     </script>
   </body>
