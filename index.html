@@ -26,19 +26,18 @@
           est.setHours(ba.getHours() - 1);
           pst.setHours(ba.getHours() - 4);
 
-          this.state = {
-            baTime: ba,
-            estTime: est,
-            pstTime: pst
-          }
+          this.state = {ba, est, pst}
         }
         render() {
           let times = _.map(this.state, (time, key) => {
             return <li key={key}>{time.toTimeString()}</li>
-          })
-          return <ul>
-            {times}
-          </ul>
+          });
+          return <div>
+            <button onClick=>Add ten seconds</button>
+            <ul>
+              {times}
+            </ul>
+          </div>
         }
       }
       ReactDOM.render(
