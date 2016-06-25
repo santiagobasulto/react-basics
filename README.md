@@ -57,3 +57,6 @@ First example with state
 
 **[Step 18](https://github.com/santiagobasulto/react-basics/releases/tag/step18):**
 Simple state example with ES6 syntax
+
+**[Step 19](https://github.com/santiagobasulto/react-basics/releases/tag/step19):**
+A more complex example using state

@@ -19,13 +19,25 @@
       class WorldClock extends React.Component {
         constructor(){
           super();
+
+          var ba = new Date();
+          var est = new Date();
+          var pst = new Date();
+          est.setHours(ba.getHours() - 1);
+          pst.setHours(ba.getHours() - 4);
+
           this.state = {
-            baTime: new Date()
+            baTime: ba,
+            estTime: est,
+            pstTime: pst
           }
         }
         render() {
+          let times = _.map(this.state, (time, key) => {
+            return <li key={key}>{time.toTimeString()}</li>
+          })
           return <ul>
-            <li>{this.state.baTime.toTimeString()}</li>
+            {times}
           </ul>
         }
       }
