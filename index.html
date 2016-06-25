@@ -16,36 +16,21 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      class WorldTime extends React.Component {
-        render(){
-          return <li>Time in {this.props.name}: {this.props.date.toTimeString()}</li>
+      var WorldClock = React.createClass({
+        getInitialState: function(){
+          return {
+            baTime: new Date()
+          };
+        },
+        render: function(){
+          return <ul>
+            <li>{this.state.baTime.toTimeString()}</li>
+          </ul>
         }
-      }
-      class WorldClock extends React.Component {
-        render() {
-          return <ul>{this.props.children}</ul>
-        }
-      }
-      WorldTime.propTypes = {
-        date: React.PropTypes.instanceOf(Date).isRequired,
-        name: React.PropTypes.string
-      }
-      setInterval(function() {
-        var ba = new Date();
-        var est = new Date();
-        var pst = new Date();
-        est.setHours(ba.getHours() - 1);
-        pst.setHours(ba.getHours() - 4);
-
-        ReactDOM.render(
-          <WorldClock>
-            <WorldTime date={ba} name="Buens Aires" />
-            <WorldTime date={est} name="New York" />
-            <WorldTime date={pst} name="San Francisco" />
-          </WorldClock>,
-          document.getElementById('app')
-        );
-      }, 500);
+      });
+      ReactDOM.render(
+        <WorldClock />,
+        document.getElementById('app'));
     </script>
   </body>
 </html>
