@@ -54,3 +54,6 @@ Component children access with props.children
 
 **[Step 17](https://github.com/santiagobasulto/react-basics/releases/tag/step17):**
 First example with state
+
+**[Step 18](https://github.com/santiagobasulto/react-basics/releases/tag/step18):**
+Simple state example with ES6 syntax

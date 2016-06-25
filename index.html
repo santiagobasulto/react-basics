@@ -16,18 +16,19 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      var WorldClock = React.createClass({
-        getInitialState: function(){
-          return {
+      class WorldClock extends React.Component {
+        constructor(){
+          super();
+          this.state = {
             baTime: new Date()
-          };
-        },
-        render: function(){
+          }
+        }
+        render() {
           return <ul>
             <li>{this.state.baTime.toTimeString()}</li>
           </ul>
         }
-      });
+      }
       ReactDOM.render(
         <WorldClock />,
         document.getElementById('app'));
