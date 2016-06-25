@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello React!</title>
+    <style>
+      .done{
+        text-decoration: line-through;
+      }
+    </style>
   </head>
   <body>
     <!-- DOM element to insert React components -->
@@ -16,6 +21,30 @@
 
     <!-- Main code -->
     <script type="text/babel">
+
+      class TodoItem extends React.Component {
+        render () {
+          return (
+            <li className={this.props.completed ? 'done': ''}
+                onClick={() => this.props.onTodoClicked(this.props.todo)}>
+            {this.props.todo}</li>
+          )
+        }
+      }
+
+      class TodoList extends React.Component {
+        render() {
+          let todos = _.map(this.props.todos, (todo) => {
+            return (
+              <TodoItem todo={todo.todo}
+              key={todo.todo} completed={todo.completed}
+              onTodoClicked={this.props.onTodoClicked} />
+            );
+          })
+          return <ul>{todos}</ul>
+        }
+      }
+
       class TodoApp extends React.Component {
         constructor(){
           super();
@@ -24,13 +53,39 @@
             todos: []
           }
         }
+        handleInputChange(evt){
+          this.setState({todoText: evt.target.value})
+        }
+        handleAddTodo(){
+          if(this.state.todoText){
+            const todo = this.state.todoText;
+            this.setState({
+              todos: [...this.state.todos, {
+                todo: todo,
+                completed: false
+              }],
+              todoText: ''
+            });
+          }
+        }
+        onTodoClicked(todo){
+          let todos = _.map(this.state.todos, (elem) => {
+            if(elem.todo == todo){
+              return {
+                todo: todo,
+                completed: !elem.completed
+              }
+            }
+            return elem
+          });
+          this.setState({todos})
+        }
         render() {
           return <div>
-            <input type="text"/><button>Add Todo</button>
-            <ul>
-              <li>Todo 1</li>
-              <li>Todo 2</li>
-            </ul>
+            <input type="text" value={this.state.todoText} onChange={this.handleInputChange.bind(this)}/>
+            <button onClick={this.handleAddTodo.bind(this)}>Add Todo</button>
+            <TodoList todos={this.state.todos} onTodoClicked={this.onTodoClicked.bind(this)}/>
+            <p>Input text: {this.state.todoText}</p>
           </div>
         }
       }
