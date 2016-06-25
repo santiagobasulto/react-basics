@@ -69,3 +69,6 @@ To finish: More state change in a simple TODO app.
 
 **[Step 22](https://github.com/santiagobasulto/react-basics/releases/tag/step22):**
 Form elements and events
+
+**[Step 23](https://github.com/santiagobasulto/react-basics/releases/tag/step23):**
+Component's life cycle

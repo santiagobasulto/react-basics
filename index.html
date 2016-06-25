@@ -24,72 +24,59 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      let FormGroup = (props) => {
-        return <div className="form-group">
-          <label>{props.label}</label>
-          {props.children}
-        </div>
+      class TodoItem extends React.Component {
+        render () {
+          let todo = this.props.task;
+          return <li onClick={() => this.props.handleTodoClicked(todo)}>{todo}</li>
+        }
+        componentWillMount(){
+          console.group("MOUNTING (%s)", this.props.task)
+          console.log("(%s) will be mounted...", this.props.task)
+        }
+        componentDidMount() {
+          console.log("Component DID mount...")
+          console.groupEnd()
+        }
+        componentWillUnmount() {
+          console.log("Unmountnig %s", this.props.task)
+        }
+        componentWillReceiveProps(nextProps) {
+          console.group("RECEIVING PROPS (%s)", this.props.task)
+          console.log("%s is receiving %s", this.props.task, JSON.stringify(nextProps))
+          console.groupEnd()
+        }
       }
-      class SimpleFormApp extends React.Component {
-        constructor(){
-          super();
-          this.debugInputChange = this.debugInputChange.bind(this);
-          this.debugCheckboxChange = this.debugCheckboxChange.bind(this);
-          this.debugSubmit = this.debugSubmit.bind(this);
+      class TodoList extends React.Component {
+        constructor(props){
+          super(props);
+          this.state = {
+            todos: []
+          }
         }
-        debugSubmit(evt){
-          evt.preventDefault();
-          console.log(evt);
+        addRandomTodo(){
+          let newTodo = "Random todo: " + Math.floor(Math.random() * 1000);
+          this.setState({todos: [...this.state.todos, newTodo]})
         }
-        debugInputChange(evt){
-          // console.log(evt.target === this.simpleInput)
-          console.group("Input: %s", evt.target.dataset.inputName);
-          console.log(evt.target.value)
-          console.groupEnd("Input: %s", evt.target.dataset.inputName);
-        }
-        debugCheckboxChange(evt){
-          console.group("Input: %s", evt.target.dataset.inputName);
-          console.log(evt.target.checked)
-          console.groupEnd("Input: %s", evt.target.dataset.inputName);
+        todoClicked(todo){
+          this.setState({
+            todos: _.filter(this.state.todos, (val) => val !== todo)
+          })
         }
         render() {
-          return <form onSubmit={this.debugSubmit} >
-            <FormGroup label={"Simple input"}>
-              <input type="text" className="form-control" data-input-name="simple-input" onChange={this.debugInputChange} ref={(ref) => this.simpleInput = ref}/>
-            </FormGroup>
-            <FormGroup label={"Password Input"}>
-              <input type="password" className="form-control" data-input-name="password-input" onChange={this.debugInputChange} />
-            </FormGroup>
-            <div className="checkbox">
-              <label>
-                <input type="checkbox" data-input-name="checkbox" onChange={this.debugCheckboxChange}/> Simple checkbox
-              </label>
-            </div>
-            <textarea className="form-control" rows="3" data-input-name="text-area" onChange={this.debugInputChange}></textarea>
-            <div className="radios">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked data-input-name="radio-1" onChange={this.debugInputChange} />
-                  Radio Option 1
-                </label>
-              </div>
-              <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-                    Radio Option 2
-                  </label>
-              </div>
-            </div>
-            <select className="form-control" data-input-name="select" onChange={this.debugInputChange}>
-              <option>Option 1</option>
-              <option>Option 2</option>
-            </select>
-            <button type="submit" className="btn btn-default">Submit</button>
-          </form>
+          let todoList = _.map(this.state.todos, ((todo) => {
+            return <TodoItem task={todo} key={todo} handleTodoClicked={this.todoClicked.bind(this)} />
+          }).bind(this))
+          return <div>
+            <h1>Todo App</h1>
+            <button onClick={this.addRandomTodo.bind(this)}>Add Random todo</button>
+            <ul>
+              {todoList}
+            </ul>
+          </div>
         }
       }
       ReactDOM.render(
-        <SimpleFormApp />,
+        <TodoList />,
         document.getElementById('app'));
     </script>
   </body>
