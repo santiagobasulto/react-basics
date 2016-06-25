@@ -66,3 +66,6 @@ To finish: Our first state change.
 
 **[Step 21](https://github.com/santiagobasulto/react-basics/releases/tag/step21):**
 To finish: More state change in a simple TODO app.
+
+**[Step 22](https://github.com/santiagobasulto/react-basics/releases/tag/step22):**
+Form elements and events

@@ -3,10 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello React!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
   </head>
   <body>
     <!-- DOM element to insert React components -->
-    <div id="app"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-md-offset-1 col-lg-offset-2">
+          <div id="app"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- React libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
@@ -16,26 +24,72 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      class TodoApp extends React.Component {
+      let FormGroup = (props) => {
+        return <div className="form-group">
+          <label>{props.label}</label>
+          {props.children}
+        </div>
+      }
+      class SimpleFormApp extends React.Component {
         constructor(){
           super();
-          this.state = {
-            todoText: '',
-            todos: []
-          }
+          this.debugInputChange = this.debugInputChange.bind(this);
+          this.debugCheckboxChange = this.debugCheckboxChange.bind(this);
+          this.debugSubmit = this.debugSubmit.bind(this);
+        }
+        debugSubmit(evt){
+          evt.preventDefault();
+          console.log(evt);
+        }
+        debugInputChange(evt){
+          // console.log(evt.target === this.simpleInput)
+          console.group("Input: %s", evt.target.dataset.inputName);
+          console.log(evt.target.value)
+          console.groupEnd("Input: %s", evt.target.dataset.inputName);
+        }
+        debugCheckboxChange(evt){
+          console.group("Input: %s", evt.target.dataset.inputName);
+          console.log(evt.target.checked)
+          console.groupEnd("Input: %s", evt.target.dataset.inputName);
         }
         render() {
-          return <div>
-            <input type="text"/><button>Add Todo</button>
-            <ul>
-              <li>Todo 1</li>
-              <li>Todo 2</li>
-            </ul>
-          </div>
+          return <form onSubmit={this.debugSubmit} >
+            <FormGroup label={"Simple input"}>
+              <input type="text" className="form-control" data-input-name="simple-input" onChange={this.debugInputChange} ref={(ref) => this.simpleInput = ref}/>
+            </FormGroup>
+            <FormGroup label={"Password Input"}>
+              <input type="password" className="form-control" data-input-name="password-input" onChange={this.debugInputChange} />
+            </FormGroup>
+            <div className="checkbox">
+              <label>
+                <input type="checkbox" data-input-name="checkbox" onChange={this.debugCheckboxChange}/> Simple checkbox
+              </label>
+            </div>
+            <textarea className="form-control" rows="3" data-input-name="text-area" onChange={this.debugInputChange}></textarea>
+            <div className="radios">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked data-input-name="radio-1" onChange={this.debugInputChange} />
+                  Radio Option 1
+                </label>
+              </div>
+              <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+                    Radio Option 2
+                  </label>
+              </div>
+            </div>
+            <select className="form-control" data-input-name="select" onChange={this.debugInputChange}>
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </select>
+            <button type="submit" className="btn btn-default">Submit</button>
+          </form>
         }
       }
       ReactDOM.render(
-        <TodoApp />,
+        <SimpleFormApp />,
         document.getElementById('app'));
     </script>
   </body>
