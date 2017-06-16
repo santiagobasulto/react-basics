@@ -4,44 +4,46 @@ This is a step-by-step tutorial about React. We're using tags to differentiate e
 
 ## Steps
 
-**[Step 1](https://github.com/santiagobasulto/react-basics/releases/tag/step1):**
+**[Step 1](https://github.com/santiagobasulto/react-basics/tree/step-1):**
 Render simple element in the screen
 
-**[Step 2](https://github.com/santiagobasulto/react-basics/releases/tag/step2):**
+**[Step 2](https://github.com/santiagobasulto/react-basics/tree/step-2):**
 Create first component
 
-**[Step 3](https://github.com/santiagobasulto/react-basics/releases/tag/step3):**
+**[Step 3](https://github.com/santiagobasulto/react-basics/tree/step-3):**
 Pass first props
 
-**[Step 4](https://github.com/santiagobasulto/react-basics/releases/tag/step4):**
+**[Step 4](https://github.com/santiagobasulto/react-basics/tree/step-4):**
 JSX is just JS
 
-**[Step 5](https://github.com/santiagobasulto/react-basics/releases/tag/step5):**
+**[Step 5](https://github.com/santiagobasulto/react-basics/tree/step-5):**
 React without JSX
 
-**[Step 6](https://github.com/santiagobasulto/react-basics/releases/tag/step6):**
+**[Step 6](https://github.com/santiagobasulto/react-basics/tree/step-6):**
 Special props (className)
 
-**[Step 7](https://github.com/santiagobasulto/react-basics/releases/tag/step7):**
+**[Step 7](https://github.com/santiagobasulto/react-basics/tree/step-7):**
 Special props (className) without JSX
 
-**[Step 8](https://github.com/santiagobasulto/react-basics/releases/tag/step8):**
+**[Step 8](https://github.com/santiagobasulto/react-basics/tree/step-8):**
 Components and elements case conventions
 
-**[Step 9](https://github.com/santiagobasulto/react-basics/releases/tag/step9):**
+**[Step 9](https://github.com/santiagobasulto/react-basics/tree/step-9):**
 Components composition
 
-**[Step 10](https://github.com/santiagobasulto/react-basics/releases/tag/step10):**
+**[Step 10](https://github.com/santiagobasulto/react-basics/tree/step-10):**
 Properties without values act as booleans
 
-**[Step 11](https://github.com/santiagobasulto/react-basics/releases/tag/step11):**
+**[Step 11](https://github.com/santiagobasulto/react-basics/tree/step-11):**
 getDefaultProps to specify default property values
 
-**[Step 12](https://github.com/santiagobasulto/react-basics/releases/tag/step12):**
-Specifying expected props with propTypes
-
-**[Step 13](https://github.com/santiagobasulto/react-basics/releases/tag/step13):**
+**[Step 12](https://github.com/santiagobasulto/react-basics/tree/step-12):**
 First example using ES6 classes
+
+**[Step 13](https://github.com/santiagobasulto/react-basics/tree/step-13):**
+Complete example with props and propTypes using ES6 style
+
+---------
 
 **[Step 14](https://github.com/santiagobasulto/react-basics/releases/tag/step14):**
 Complete example with props and propTypes using ES6 style
