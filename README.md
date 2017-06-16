@@ -41,7 +41,7 @@ getDefaultProps to specify default property values
 First example using ES6 classes
 
 **[Step 13](https://github.com/santiagobasulto/react-basics/tree/step-13):**
-Complete example with props and propTypes using ES6 style
+A more complex example using dynamically generated components
 
 ---------
 
