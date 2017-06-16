@@ -17,13 +17,15 @@
     <script type="text/babel">
       var HelloWorld = React.createClass({
         render: function(){
-          return <h1>Hello {this.props.name}!</h1>
+          return <h1>Time: {this.props.date.toTimeString()}</h1>
         }
       });
-      ReactDOM.render(
-        <HelloWorld name="Juán"/>,
-        document.getElementById('app')
-      );
+      setInterval(function() {
+        ReactDOM.render(
+          <HelloWorld date={new Date()} />,
+          document.getElementById('app')
+        );
+      }, 500);
     </script>
   </body>
 </html>
