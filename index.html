@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello React!</title>
+    <!-- Styles -->
+    <style>
+      .red-text{
+        color: red;
+      }
+    </style>
   </head>
   <body>
     <!-- DOM element to insert React components -->
@@ -17,14 +23,12 @@
     <script type="text/babel">
       var HelloWorld = React.createClass({
         render: function(){
-          var text = 'Time: ' + this.props.date.toTimeString();
-          return React.createElement('h1', null, text);
+          return <h1 className='red-text'>Time: {this.props.date.toTimeString()}</h1>
         }
       });
       setInterval(function() {
-        var helloWorldComponent = React.createElement(HelloWorld, {date: new Date()})
         ReactDOM.render(
-          helloWorldComponent,
+          <HelloWorld date={new Date()} />,
           document.getElementById('app')
         );
       }, 500);
