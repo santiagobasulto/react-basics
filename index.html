@@ -22,21 +22,16 @@
 
     <!-- Main code -->
     <script type="text/babel">
-      class TimeComponent extends React.Component {
+      class WorldTime extends React.Component {
         render(){
           return <li>Time in {this.props.name}: {this.props.date.toTimeString()}</li>
         }
       }
-      class HelloWorld extends React.Component {
+      class WorldClock extends React.Component {
         render() {
-          let namesAndDates = _.zip(this.props.worldNames, this.props.worldDates);
-          let components = _.map(namesAndDates, ([name, date]) => {
-            return <TimeComponent date={date} name={name} key={name} />
-          })
-          return <ul>{components}</ul>
+          return <ul>{this.props.children}</ul>
         }
       }
-
       setInterval(function() {
         var ba = new Date();
         var est = new Date();
@@ -44,7 +39,11 @@
         est.setHours(ba.getHours() - 1);
         pst.setHours(ba.getHours() - 4);
         ReactDOM.render(
-          <HelloWorld worldDates={[ba, est, pst]} worldNames={['Buenos Aires', 'New York', 'San Francisco']} />,
+          <WorldClock>
+            <WorldTime date={ba} name="Buenos Aires" />
+            <WorldTime date={est} name="New York" />
+            <WorldTime date={pst} name="San Francisco" />
+          </WorldClock>,
           document.getElementById('app')
         );
       }, 500);
