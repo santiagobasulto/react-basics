@@ -3,81 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello React!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
   </head>
   <body>
     <!-- DOM element to insert React components -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-md-offset-1 col-lg-offset-2">
-          <div id="app"></div>
-        </div>
-      </div>
-    </div>
+    <div id="app"></div>
 
     <!-- React libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
 
     <!-- Main code -->
     <script type="text/babel">
-      class TodoItem extends React.Component {
-        render () {
-          let todo = this.props.task;
-          return <li onClick={() => this.props.handleTodoClicked(todo)}>{todo}</li>
-        }
-        componentWillMount(){
-          console.group("MOUNTING (%s)", this.props.task)
-          console.log("(%s) will be mounted...", this.props.task)
-        }
-        componentDidMount() {
-          console.log("Component DID mount...")
-          console.groupEnd()
-        }
-        componentWillUnmount() {
-          console.log("Unmountnig %s", this.props.task)
-        }
-        componentWillReceiveProps(nextProps) {
-          console.group("RECEIVING PROPS (%s)", this.props.task)
-          console.log("%s is receiving %s", this.props.task, JSON.stringify(nextProps))
-          console.groupEnd()
-        }
-      }
-      class TodoList extends React.Component {
-        constructor(props){
-          super(props);
-          this.state = {
-            todos: []
-          }
-        }
-        addRandomTodo(){
-          let newTodo = "Random todo: " + Math.floor(Math.random() * 1000);
-          this.setState({todos: [...this.state.todos, newTodo]})
-        }
-        todoClicked(todo){
-          this.setState({
-            todos: _.filter(this.state.todos, (val) => val !== todo)
-          })
-        }
-        render() {
-          let todoList = _.map(this.state.todos, ((todo) => {
-            return <TodoItem task={todo} key={todo} handleTodoClicked={this.todoClicked.bind(this)} />
-          }).bind(this))
-          return <div>
-            <h1>Todo App</h1>
-            <button onClick={this.addRandomTodo.bind(this)}>Add Random todo</button>
-            <ul>
-              {todoList}
-            </ul>
-          </div>
-        }
-      }
       ReactDOM.render(
-        <TodoList />,
-        document.getElementById('app'));
+        <h1>Hello World</h1>,
+        document.getElementById('app')
+      );
     </script>
   </body>
 </html>
