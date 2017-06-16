@@ -43,16 +43,10 @@ First example using ES6 classes
 **[Step 13](https://github.com/santiagobasulto/react-basics/tree/step-13):**
 A more complex example using dynamically generated components
 
----------
-
-**[Step 14](https://github.com/santiagobasulto/react-basics/releases/tag/step14):**
-Complete example with props and propTypes using ES6 style
-
-**[Step 15](https://github.com/santiagobasulto/react-basics/releases/tag/step15):**
-A more complex example using dynamically generated components
-
-**[Step 16](https://github.com/santiagobasulto/react-basics/releases/tag/step16):**
+**[Step 14](https://github.com/santiagobasulto/react-basics/tree/step-14):**
 Component children access with props.children
+
+---------
 
 **[Step 17](https://github.com/santiagobasulto/react-basics/releases/tag/step17):**
 First example with state
